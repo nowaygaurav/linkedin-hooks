@@ -43,8 +43,9 @@ em{ font-style:normal; color:var(--cobalt) }
 .small{ font-size:19px }
 
 /* hand-drawn marker underline, borrowed from Kiki */
-.mark{ display:inline-block; position:relative; line-height:inherit; padding-bottom:10px; white-space:nowrap }
-.squig{ position:absolute; left:0; bottom:0; width:100%; height:20px; display:block }
+.mark{ display:inline-block; line-height:inherit; white-space:nowrap; vertical-align:top }
+/* in normal flow on purpose: html2canvas drops positioned images inside a full page capture */
+.squig{ display:block; width:100%; height:20px; margin-top:-10px }
 
 /* chips + cards */
 .chip,.fact{ display:inline-block; border:2.5px solid var(--ink); border-radius:999px; padding:7px 17px;
