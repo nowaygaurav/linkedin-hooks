@@ -630,7 +630,7 @@ em{ font-style:normal; color:var(--cobalt) }
 </section><a class="dl" href="10-hooks-i-actually-posted.pdf" download>download the pdf</a>
 <script>
 // screen only: shrink the 1080px pages to fit phones
-function fit(){ document.body.style.zoom = Math.min(1, (window.innerWidth - 16) / 1080); }
+function fit(){ document.body.style.zoom = Math.min(1, (document.documentElement.clientWidth - 16) / 1080); }
 if (!matchMedia('print').matches) { fit(); addEventListener('resize', fit); }
 addEventListener('beforeprint', () => document.body.style.zoom = 1);
 </script></body></html>
