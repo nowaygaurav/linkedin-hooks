@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 hooks i actually posted</title>
+<meta name="description" content="10 linkedin hooks from my own posts, ranked by what people actually reacted to. each with a template to steal and a 5 minute task.">
+<meta property="og:title" content="10 hooks i actually posted · gaurav sharma">
+<meta property="og:description" content="10 linkedin hooks from my own posts, ranked by reactions. template + 5 minute task for each.">
+<meta property="og:image" content="https://nowaygaurav.github.io/linkedin-hooks/cover.png">
+<meta property="og:url" content="https://nowaygaurav.github.io/linkedin-hooks/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Instrument+Sans:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>:root{
+  --cream:#F4EADB; --paper:#FFFAF0; --cobalt:#1B3CCB; --cobalt-soft:#E3E6FA;
+  --ink:#17150F; --marker:#FFC93D; --mute:#8A8172; --crimson:#B4122C;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --hand:"Caveat","Bradley Hand",cursive;
+  --ui:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --wobble:26px 34px 22px 30px / 30px 22px 34px 26px;
+}
+@page{ size:1080px 1350px; margin:0 }
+*{ box-sizing:border-box; margin:0; padding:0 }
+html,body{ background:var(--cream); -webkit-print-color-adjust:exact; print-color-adjust:exact }
+body{ font-family:var(--ui); color:var(--ink) }
+a{ color:inherit }
+
+.page{ width:1080px; height:1350px; position:relative; overflow:hidden;
+  padding:76px 84px 0; background:var(--cream); break-after:page }
+.page:last-child{ break-after:auto }
+
+/* type */
+.eyebrow{ font-weight:700; font-size:18px; letter-spacing:.09em; text-transform:uppercase; color:var(--cobalt) }
+h1,h2,h3,h4{ font-family:var(--display); font-weight:800; letter-spacing:-.025em }
+h1{ font-size:132px; line-height:.9; margin-top:34px; max-width:780px }
+h2{ font-size:84px; line-height:.95; margin-top:22px; max-width:780px }
+h3{ font-size:34px; line-height:1.1 }
+em{ font-style:normal; color:var(--cobalt) }
+.lede{ font-size:27px; line-height:1.42; margin-top:22px; max-width:790px }
+.lede.big{ font-size:29px; max-width:820px }
+.hand{ font-family:var(--hand); font-weight:700 }
+.blue{ color:var(--cobalt) }
+.mute{ color:var(--mute) }
+.small{ font-size:19px }
+
+/* hand-drawn marker underline, borrowed from Kiki */
+.mark{ display:inline-block; line-height:inherit; padding-bottom:10px; white-space:nowrap;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13' fill='none' stroke='%23FFC93D' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left 100% / 100% 20px }
+
+/* chips + cards */
+.chip,.fact{ display:inline-block; border:2.5px solid var(--ink); border-radius:999px; padding:7px 17px;
+  font-family:var(--ui); font-size:16px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+  background:var(--paper); color:var(--ink); line-height:1.2 }
+.fact.hi{ background:var(--marker) }
+.card{ background:var(--paper); border:3px solid var(--ink); box-shadow:8px 8px 0 var(--ink) }
+.dot{ display:inline-flex; align-items:center; justify-content:center; flex:none; width:34px; height:34px;
+  border:2.5px solid var(--cobalt); border-radius:50%; color:var(--cobalt); font-weight:700; font-size:17px }
+.dot.big{ width:58px; height:58px; font-family:var(--display); font-size:30px; font-weight:800;
+  background:var(--cobalt); color:#fff; border:3px solid var(--ink) }
+
+.foot{ position:absolute; left:84px; right:84px; bottom:40px; display:flex; justify-content:space-between;
+  align-items:baseline; font-size:17px; color:var(--mute) }
+.foot .hand{ font-size:26px }
+
+.star{ position:absolute }
+
+/* ---------- cover ---------- */
+.cover-star{ width:230px; height:230px; right:74px; top:120px; transform:rotate(-9deg) }
+.bubble{ position:absolute; right:92px; top:356px; font-size:34px; color:var(--cobalt); transform:rotate(-6deg) }
+.chips{ display:flex; flex-wrap:wrap; gap:12px; margin-top:32px }
+.cover .inside{ margin-top:48px; padding:30px 34px 32px }
+.cover .inside h3{ font-size:30px }
+.cover .inside p{ margin-top:4px }
+.cover ol{ list-style:none; columns:2; column-gap:30px; margin-top:20px }
+.cover li{ display:flex; align-items:center; gap:14px; font-size:23px; margin-bottom:14px; break-inside:avoid }
+
+/* ---------- rules ---------- */
+.rules-star{ width:140px; height:140px; right:84px; top:92px; transform:rotate(12deg) }
+.rule{ display:flex; gap:24px; align-items:flex-start; padding:26px 30px; margin-top:26px }
+.rule:first-of-type{ margin-top:40px }
+.rule h3{ font-size:34px; margin-top:4px }
+.rule p{ font-size:23px; line-height:1.45; margin-top:6px }
+.data{ position:absolute; left:84px; right:84px; bottom:110px; display:flex; gap:32px; align-items:center;
+  background:var(--marker); border:3px solid var(--ink); border-radius:var(--wobble);
+  box-shadow:8px 8px 0 var(--ink); padding:28px 34px; transform:rotate(-1deg) }
+.data .x{ font-family:var(--display); font-weight:800; font-size:118px; line-height:.9; letter-spacing:-.04em; color:var(--cobalt) }
+.data p{ font-size:22px; line-height:1.42 }
+.data p + p{ margin-top:6px }
+.data .hand{ font-size:30px; color:var(--cobalt); line-height:1.1 }
+
+/* ---------- hook pages ---------- */
+.page.hook{ display:flex; flex-direction:column; align-items:flex-start }
+.hook > *{ flex:none }
+.hook .top{ display:flex; align-items:center }
+.hook .chip{ margin-top:22px }
+.hook h2{ margin-top:16px; font-size:78px; max-width:740px }
+.hook .lede{ font-size:24px; margin-top:12px; max-width:760px }
+.num{ position:absolute; right:84px; top:66px; width:136px; height:136px; border-radius:50%;
+  background:var(--cobalt); border:4px solid var(--ink); box-shadow:6px 6px 0 var(--ink);
+  display:flex; align-items:center; justify-content:center; transform:rotate(8deg);
+  font-family:var(--display); font-weight:800; font-size:68px; color:#fff; letter-spacing:-.03em; padding-top:8px }
+
+.post{ align-self:stretch; margin-top:28px; padding:20px 28px 20px; transform:rotate(-.7deg) }
+.post-head{ display:flex; gap:14px; align-items:center; margin-bottom:10px }
+.av{ width:52px; height:52px; border-radius:50%; background:var(--cobalt); color:#fff; border:2.5px solid var(--ink);
+  display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800; font-size:26px; padding-top:4px }
+.post-head b{ display:block; font-size:20px }
+.post-head small{ font-size:16px; color:var(--mute) }
+.l1,.l2{ font-size:29px; line-height:1.28; font-weight:500 }
+.l2{ margin-top:4px }
+.more{ display:block; margin-top:6px; font-size:18px; color:var(--mute) }
+.stats{ display:flex; gap:10px; margin-top:12px }
+.stats .fact{ font-size:15px; padding:6px 14px }
+.also{ margin-top:18px; font-size:19px; line-height:1.4; padding-left:4px }
+.also .hand{ font-size:27px; color:var(--cobalt); margin-right:4px }
+.also .mute{ font-size:17px; white-space:nowrap }
+
+.cols{ align-self:stretch; display:grid; grid-template-columns:1fr 1fr; gap:34px; margin-top:28px }
+.cols h4{ font-family:var(--hand); font-weight:700; font-size:32px; letter-spacing:0; color:var(--cobalt); line-height:1 }
+.why ul{ list-style:none; margin-top:10px }
+.why li{ font-size:19px; line-height:1.36; padding-left:24px; position:relative; margin-top:6px }
+.why li::before{ content:"-"; position:absolute; left:4px; color:var(--cobalt); font-weight:700 }
+.watch{ margin-top:12px; font-size:18px; line-height:1.4; padding-top:12px; border-top:2px dashed var(--ink) }
+.watch b{ color:var(--crimson); text-transform:uppercase; font-size:15px; letter-spacing:.08em; margin-right:6px }
+.tpl{ background:var(--cobalt-soft); padding:20px 24px; align-self:start; box-shadow:6px 6px 0 var(--ink) }
+.tpl p{ margin-top:10px; font-size:21px; line-height:1.75 }
+.blank{ background:var(--marker); border:2px solid var(--ink); border-radius:8px; padding:0 7px; font-weight:600;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone }
+
+.turn{ align-self:stretch; margin:auto 8px 92px 0; background:var(--cobalt); color:#fff;
+  border:3px solid var(--ink); box-shadow:8px 8px 0 var(--ink); border-radius:var(--wobble);
+  padding:20px 30px 16px; transform:rotate(.5deg) }
+.turn h4{ font-size:32px; display:flex; align-items:center; gap:14px; letter-spacing:-.01em }
+.turn h4 .fact{ font-size:14px; padding:4px 12px }
+.turn p{ font-size:21px; line-height:1.42; margin-top:6px }
+.lines i{ display:block; height:36px; border-bottom:2px dashed rgba(255,250,240,.55) }
+
+/* ---------- worksheet ---------- */
+.rows{ margin-top:36px; padding:10px 34px 16px }
+.row{ padding:20px 0 16px; border-bottom:2px dashed var(--ink) }
+.row:last-child{ border-bottom:0 }
+.row .chip{ background:var(--cobalt-soft) }
+.wl{ display:flex; align-items:flex-end; gap:14px; margin-top:10px }
+.wl span{ font-family:var(--hand); font-weight:700; font-size:24px; color:var(--cobalt); width:62px; flex:none }
+.wl i{ flex:1; height:30px; border-bottom:2px solid var(--ink) }
+
+/* ---------- check ---------- */
+.checklist{ margin-top:40px; padding:18px 36px }
+.checklist ul{ list-style:none }
+.checklist li{ display:flex; gap:22px; align-items:flex-start; font-size:29px; line-height:1.35; padding:28px 0; border-bottom:2px dashed var(--ink) }
+.checklist li:last-child{ border-bottom:0 }
+.box{ flex:none; width:36px; height:36px; border:3px solid var(--ink); border-radius:7px; background:var(--cream); margin-top:1px }
+.leftout{ position:absolute; left:84px; right:92px; bottom:110px; background:var(--crimson); color:#FFFAF4;
+  border:3px solid var(--ink); border-radius:var(--wobble); box-shadow:8px 8px 0 var(--ink); padding:30px 36px; transform:rotate(-1.2deg) }
+.leftout h3{ font-family:var(--hand); font-weight:700; font-size:50px; letter-spacing:0; color:#FFFAF4 }
+.leftout p{ font-size:24px; line-height:1.45; margin-top:10px }
+
+/* ---------- back ---------- */
+.back{ background:var(--cobalt); color:#FFFAF4 }
+.back .eyebrow.light{ color:var(--marker) }
+.back h2{ color:#FFFAF4; max-width:720px }
+.back .lede{ color:#FFFAF4 }
+.back-star{ width:190px; height:190px; right:74px; top:84px; transform:rotate(10deg) }
+.back-star path{ fill:var(--marker) }
+.cta{ margin-top:40px; padding:30px 36px 32px; color:var(--ink) }
+.cta .chip{ background:var(--marker) }
+.cta h3{ font-size:48px; margin-top:16px; line-height:1 }
+.cta p{ font-size:23px; line-height:1.45; margin-top:12px }
+.btn{ display:inline-block; margin-top:22px; font-family:var(--display); font-weight:800; font-size:26px; text-decoration:none;
+  background:var(--cobalt); color:#fff; border:3px solid var(--ink); border-radius:999px; padding:12px 34px 9px; box-shadow:5px 5px 0 var(--ink) }
+.url{ display:inline-block; margin-left:18px; font-size:18px; color:var(--mute) }
+.send{ margin-top:56px; font-size:25px; line-height:1.4 }
+.send .hand{ display:block; font-size:44px; color:var(--marker); margin-top:6px; transform:rotate(-1.5deg); transform-origin:left }
+.say{ margin-top:14px; font-size:22px }
+.say a{ font-weight:600 }
+.fine{ position:absolute; left:84px; right:84px; bottom:96px; font-size:16px; line-height:1.5; opacity:.72; max-width:860px }
+.back .foot{ color:rgba(255,250,244,.6) }
+.tick{ margin-top:34px; font-size:36px; color:var(--cobalt); transform:rotate(-1deg); max-width:820px; line-height:1.15 }
+
+/* ---------- screen only (web version) ---------- */
+.dl{ display:none }
+@media screen{
+  html,body{ background:#E9DDCB }
+  body{ padding:24px 0 120px }
+  .page{ margin:0 auto 28px; box-shadow:0 0 0 3px var(--ink), 10px 10px 0 3px var(--ink) }
+  .dl{ display:inline-block; position:fixed; left:50%; bottom:28px; transform:translateX(-50%); z-index:9;
+    font-family:var(--display); font-weight:800; font-size:24px; text-decoration:none; color:#fff; background:var(--cobalt);
+    border:3px solid var(--ink); border-radius:999px; padding:12px 34px 9px; box-shadow:5px 5px 0 var(--ink) }
+}
+@media print{ .dl{ display:none !important } }
+</style></head>
+<body>
+<section class="page cover">
+  <div class="eyebrow">a free guide · gaurav sharma</div>
+  <svg class="star cover-star" viewBox="0 0 200 200" aria-hidden="true">
+<path d="M101 6 L126 70 L193 74 L139 119 L157 187 L99 147 L41 189 L61 117 L7 72 L75 69 Z" fill="#1B3CCB" stroke="#17150F" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="82" cy="97" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
+<circle cx="119" cy="94" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
+<circle cx="85" cy="100" r="6" fill="#17150F"/><circle cx="122" cy="97" r="6" fill="#17150F"/>
+<ellipse cx="101" cy="126" rx="9" ry="7" fill="#17150F"/></svg>
+  <div class="bubble hand">no pressure :)</div>
+  <h1>10 hooks i <em>actually</em> posted</h1>
+  <p class="lede big">not stolen from a viral thread. pulled from 29 of my own linkedin posts, ranked by what people actually reacted to. each one comes with a template to steal and a 5 minute task.</p>
+  <div class="chips"><span class="fact hi">10 hooks</span><span class="fact">29 real posts</span><span class="fact">5 min each</span><span class="fact">zero “agree?” at the end</span></div>
+  <div class="card inside">
+    <h3>what's inside</h3>
+    <p class="mute small">ranked by reactions, best first. yes, even the ones that flopped.</p>
+    <ol><li><span class="dot">1</span>the flex with a twist</li><li><span class="dot">2</span>the confession</li><li><span class="dot">3</span>the receipt</li><li><span class="dot">4</span>the “how did i”</li><li><span class="dot">5</span>the fake-out</li><li><span class="dot">6</span>the withheld answer</li><li><span class="dot">7</span>the backfire</li><li><span class="dot">8</span>the one-liner</li><li><span class="dot">9</span>the hot take</li><li><span class="dot">10</span>the mirror</li></ol>
+  </div>
+  <footer class="foot"><span>gaurav sharma · personal branding for B2B and D2C founders</span><span class="hand blue">made in delhi ncr</span></footer>
+</section>
+<section class="page rules">
+  <div class="eyebrow">read this first</div>
+  <svg class="star rules-star" viewBox="0 0 200 200" aria-hidden="true">
+<path d="M101 6 L126 70 L193 74 L139 119 L157 187 L99 147 L41 189 L61 117 L7 72 L75 69 Z" fill="#1B3CCB" stroke="#17150F" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="82" cy="97" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
+<circle cx="119" cy="94" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
+<circle cx="85" cy="100" r="6" fill="#17150F"/><circle cx="122" cy="97" r="6" fill="#17150F"/>
+<ellipse cx="101" cy="126" rx="9" ry="7" fill="#17150F"/></svg>
+  <h2>your hook has <span class="mark">one job</span></h2>
+  <p class="lede">make them read line two. not go viral, not sound smart. just line two.</p>
+
+  <div class="rule card"><span class="dot big">1</span><div><h3>two lines, then a gap</h3>
+    <p>line 1 is the tension, line 2 is the promise. keep it under ~15 words before “see more” cuts you off, and make line 1 fit on one phone line.</p></div></div>
+  <div class="rule card"><span class="dot big">2</span><div><h3>who + problem + hold back</h3>
+    <p>name who it's for, touch a problem they actually have, and don't hand over the answer in the hook.</p></div></div>
+  <div class="rule card"><span class="dot big">3</span><div><h3>write 5, post 1</h3>
+    <p>write the same hook 5 ways, each in a different style from this guide. post the one that makes <i>you</i> want to read the next line.</p></div></div>
+
+  <div class="data">
+    <div class="x">~3x</div>
+    <div>
+      <p><b>what my own data told me:</b> posts about my actual life got 105 to 175 reactions. my “here are 5 tips” posts got 36 to 52.</p>
+      <p class="hand">(yes i checked. it hurt a little.)</p>
+      <p>so every hook in here starts with something that happened to you. not “you should”.</p>
+    </div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>2</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 01 / 10</span></header>
+  <div class="num">01</div>
+  <span class="chip">celebration + contrast</span>
+  <h2>the flex <span class="mark">with a twist</span></h2>
+  <p class="lede">say the impressive thing, then undercut it straight away. the gap between the two lines is the hook.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">i was the president of Finance & Investment Cell, Aryabhatta College</p>
+    <p class="l2">and now my career is complete opposite of it</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">175 reactions</span><span class="fact">14 comments</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>line 1 is proof, so nobody scrolls past thinking you're a nobody</li><li>line 2 opens a question: wait, why did he leave?</li><li>the flex feels earned because the post is about walking away from it</li></ul>
+      <p class="watch"><b>watch out</b> if the twist never comes, it's just a brag with extra steps.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p>i was <span class="blank">the impressive thing you used to be</span><br>and now i <span class="blank">do the complete opposite</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>write down 3 titles, roles or wins you had that have nothing to do with your work today. pick the one people would least expect from you. that's line 1.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>3</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 02 / 10</span></header>
+  <div class="num">02</div>
+  <span class="chip">face + story</span>
+  <h2>the <span class="mark">confession</span></h2>
+  <p class="lede">open on the feeling you'd normally hide. people stop for the emotion and stay for the story.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">seeing my mother crying was not on the bucket list gang</p>
+    <p class="l2">but your boy has finally moved out..</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">171 reactions</span><span class="fact">33 comments</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>line 1 is a scene, not a claim. you can literally see it</li><li>“gang” and “your boy” stop it from getting too heavy</li><li>line 2 says what actually happened, so nobody feels tricked</li></ul>
+      <p class="watch"><b>watch out</b> don't fake the feeling. people can smell a manufactured tear from the feed.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p><span class="blank">the emotional moment you didn't plan for</span><br>but <span class="blank">the big thing you actually did</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>think of the last big decision you made. what was the hardest moment around it, the one you'd skip if you told the story at a party? start there.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>4</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 03 / 10</span></header>
+  <div class="num">03</div>
+  <span class="chip">credibility</span>
+  <h2>the <span class="mark">receipt</span></h2>
+  <p class="lede">one exact number does more than a paragraph of adjectives. the more precise, the more people believe it.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">in the month of july i spent 1,15,643</p>
+    <p class="l2">to be precise</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">155 reactions</span><span class="fact">28 comments</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>1,15,643 is not a round number, so it reads as true</li><li>money is the one topic everyone reads twice</li><li>“to be precise” is a tiny joke. it sounds like a person, not a report</li></ul>
+      <p class="watch"><b>watch out</b> the number needs a story behind it. mine was moving out and buying my brother a phone.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p>in <span class="blank">a time period</span> i <span class="blank">spent / sent / lost / made</span> <span class="blank">an exact, unrounded number</span><br><span class="blank">a 3 word aside</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>open your bank app, screen time, calendar or sent folder. find one number from last month that surprised you. don't round it.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>5</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 04 / 10</span></header>
+  <div class="num">04</div>
+  <span class="chip">value</span>
+  <h2>the <span class="mark">“how did i”</span></h2>
+  <p class="lede">ask the question people would DM you anyway, then answer it in the post. it's a promise dressed up as a question.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">how as a 21 year old i managed</p>
+    <p class="l2">to move out from my house?</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">141 reactions</span><span class="fact">30 comments</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>it's specific: an age, an action, a result</li><li>it promises a how, so people expect steps and stay for them</li><li>30 comments, because everyone had their own version to share</li></ul>
+      <p class="watch"><b>watch out</b> you have to actually give the how. a question hook with a vague answer burns trust fast.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p>how as a <span class="blank">who you were back then</span> i managed<br>to <span class="blank">the thing people think is hard</span>?</p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>what's one thing people keep asking you “how did you do that?” about? write the question exactly the way they ask it.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>6</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 05 / 10</span></header>
+  <div class="num">05</div>
+  <span class="chip">surprise</span>
+  <h2>the <span class="mark">fake-out</span></h2>
+  <p class="lede">say something that sounds like one thing, then flip it in the very next line.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">i hate posting on linkedin nowadays!!</p>
+    <p class="l2">and it's not what you think</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">118 reactions</span><span class="fact">11 comments</span></div>
+  </div>
+  <div class="also"><span class="hand">also worked:</span> “i am hiring, actually not for my company!” <span class="mute">105 reactions · 27 comments</span></div>
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>line 1 gives a tiny “wait, what?”</li><li>line 2 admits there's a twist, so people tap to get it</li><li>it only works when the flip is honest</li></ul>
+      <p class="watch"><b>watch out</b> the real reason has to be good. if the twist is boring, the fake-out feels like a lie.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p>i <span class="blank">a strong statement nobody expects from you</span><br>and it's not what you think</p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>finish “i hate ___” three different ways. keep the one where the real reason is the opposite of what people will assume.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>7</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 06 / 10</span></header>
+  <div class="num">06</div>
+  <span class="chip">curiosity</span>
+  <h2>the withheld <span class="mark">answer</span></h2>
+  <p class="lede">tell them there IS an answer. just don't give it in line 1.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">i inherited the one thing</p>
+    <p class="l2">i used to hate about my dad</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">107 reactions</span><span class="fact">27 comments</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>“the one thing” opens a loop the brain wants to close</li><li>everyone has a thing they swore they'd never become</li><li>the answer lands right after “see more”, so they have to tap</li></ul>
+      <p class="watch"><b>watch out</b> pay it off fast. if the answer is buried at the bottom, people leave.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p>i <span class="blank">inherited / copied / became</span> the one thing<br>i used to <span class="blank">hate / judge / laugh at</span> about <span class="blank">a person</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>who's the person you swore you'd never become? what's one habit of theirs you have now? that's your post.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>8</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 07 / 10</span></header>
+  <div class="num">07</div>
+  <span class="chip">honest failure</span>
+  <h2>the <span class="mark">backfire</span></h2>
+  <p class="lede">tell them the plan went wrong. people trust the person who admits it way more than the one who only posts wins.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">moving out actually backfired on me</p>
+    <p class="l2">because i didn't see coming these things</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">80 reactions</span><span class="fact">11 comments</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>it's the sequel to a win they already saw, so they're invested</li><li>“backfired” is one strong, simple word</li><li>an honest update beats a polished highlight reel</li></ul>
+      <p class="watch"><b>watch out</b> don't end in self pity. end with what you're changing. mine was timeblocking.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p><span class="blank">a decision you were proud of</span> actually backfired on me<br>because <span class="blank">what you didn't see coming</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>pick something you posted about proudly 1 to 3 months ago. what went wrong after? write the update nobody asked for.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>9</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 08 / 10</span></header>
+  <div class="num">08</div>
+  <span class="chip">photo + one line</span>
+  <h2>the <span class="mark">one-liner</span></h2>
+  <p class="lede">one line, one photo. no lesson, no list. it's a vibe, and vibes get comments.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">i was staring the ceiling to get some idea</p>
+    <p class="l2">i think need to stare more.</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">73 reactions</span><span class="fact">14 comments</span></div>
+  </div>
+  <div class="also"><span class="hand">also worked:</span> “Hardest question to answer ‘Aap kartey kya ho?’” <span class="mute">45 reactions · 5 comments</span></div>
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>it takes 2 seconds, so almost everyone finishes it</li><li>the photo does half the work</li><li>it reminds people you're a person, not a content machine</li></ul>
+      <p class="watch"><b>watch out</b> it's a breather, not a strategy. use it between your big posts, not instead of them.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p><span class="blank">a real, slightly silly thing you're doing right now</span><br><span class="blank">one line joke about it</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>take one honest photo of where you're working today. write one line about it. post it before you overthink it.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>10</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 09 / 10</span></header>
+  <div class="num">09</div>
+  <span class="chip">counter-narrative</span>
+  <h2>the hot <span class="mark">take</span></h2>
+  <p class="lede">say the opposite of what everyone in your space keeps repeating. only if you actually believe it.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">ai will not make you rich</p>
+    <p class="l2">at least in 2026</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">52 reactions</span><span class="fact">1 comment</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>it argues with the feed, and that stops the scroll</li><li>“at least in 2026” makes it a sharp claim, not a rant</li><li>it tells people what you stand for</li></ul>
+      <p class="watch"><b>watch out</b> honest data: my hot takes got way fewer comments than my stories. people nod and scroll. use them to take a stand, not for reach.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p><span class="blank">the popular belief in your space</span> will not <span class="blank">the promise everyone makes</span><br>at least <span class="blank">the condition that makes you right</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>write down the advice in your industry you're most tired of hearing. now write, in one line, what you'd say instead.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>11</span></footer>
+</section>
+<section class="page hook">
+  <header class="top"><span class="eyebrow">hook 10 / 10</span></header>
+  <div class="num">10</div>
+  <span class="chip">say what they're thinking</span>
+  <h2>the <span class="mark">mirror</span></h2>
+  <p class="lede">describe their problem better than they could. they feel seen before they know what you're offering.</p>
+
+  <div class="post card">
+    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
+    <p class="l1">you're posting daily, building daily, grinding daily</p>
+    <p class="l2">and still can't tell if you're actually moving forward</p>
+    <span class="more">…see more</span>
+    <div class="stats"><span class="fact hi">45 reactions</span><span class="fact">1 comment</span></div>
+  </div>
+  
+
+  <div class="cols">
+    <div class="why">
+      <h4 class="hand">why it works</h4>
+      <ul><li>daily, daily, daily is rhythm. you feel the tiredness</li><li>it names the reader without saying “if you're a creator”</li><li>the next line is “that was me”, so it turns into a story</li></ul>
+      <p class="watch"><b>watch out</b> my lowest one here, and i think i know why: the rest of the post read like advice. the mirror only works if you step into it too.</p>
+    </div>
+    <div class="tpl card">
+      <h4 class="hand">steal the template</h4>
+      <p>you're <span class="blank">doing X</span> daily, <span class="blank">doing Y</span> daily<br>and still <span class="blank">the frustration they won't say out loud</span></p>
+    </div>
+  </div>
+
+  <div class="turn">
+    <h4>your turn <span class="fact hi">5 min</span></h4>
+    <p>collect the exact words your people use when they complain. DMs, comments, calls. use their words in line 1, not yours.</p>
+    <div class="lines"><i></i><i></i></div>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>12</span></footer>
+</section>
+<section class="page sheet">
+  <div class="eyebrow">your turn · 15 min</div>
+  <h2>now you. <span class="mark">write 5.</span></h2>
+  <p class="lede">pick the next post you're going to write. write its hook 5 ways, one style each. post the one that makes you want to read line two. print this, or just screenshot it and scribble.</p>
+  <div class="card rows"><div class="row"><span class="chip">the confession</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the receipt</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the fake-out</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the withheld answer</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the mirror</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div></div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>13</span></footer>
+</section>
+<section class="page check">
+  <div class="eyebrow">before you hit post</div>
+  <h2>the 30 second <span class="mark">check</span></h2>
+  <div class="card checklist"><ul><li><span class='box'></span><span>line 1 fits on one phone line</span></li><li><span class='box'></span><span>under ~15 words before “see more”</span></li><li><span class='box'></span><span>there's a real number, name or place in it</span></li><li><span class='box'></span><span>i'd still stand by it if nobody reacted</span></li><li><span class='box'></span><span>if i pasted it on a stranger's profile, it wouldn't make sense. <span class='mute'>(that's how you know it's yours)</span></span></li></ul></div>
+  <p class="tick hand">all 5 ticked? post it. missing one? fix line 1, not the whole post.</p>
+
+  <div class="leftout">
+    <h3>the one i left out</h3>
+    <p><b>fear hooks.</b> “if you don't use AI you'll be unemployable in 2 years.” they work. they also turn you into that guy.</p>
+    <p>i'd rather be the guy who spent 1,15,643 in july and told you exactly where it went.</p>
+  </div>
+  <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>14</span></footer>
+</section>
+<section class="page back">
+  <svg class="star back-star" viewBox="0 0 200 200" aria-hidden="true">
+<path d="M101 6 L126 70 L193 74 L139 119 L157 187 L99 147 L41 189 L61 117 L7 72 L75 69 Z" fill="#1B3CCB" stroke="#17150F" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="82" cy="97" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
+<circle cx="119" cy="94" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
+<circle cx="85" cy="100" r="6" fill="#17150F"/><circle cx="122" cy="97" r="6" fill="#17150F"/>
+<ellipse cx="101" cy="126" rx="9" ry="7" fill="#17150F"/></svg>
+  <div class="eyebrow light">that's it. go post.</div>
+  <h2>stuck on what your <span class="mark">story</span> even is?</h2>
+  <p class="lede">hooks are easy once you know what you stand for. if you don't yet, i made a tiny thing for that.</p>
+  <div class="card cta">
+    <span class="chip">eight honest questions</span>
+    <h3>why do you want a personal brand?</h3>
+    <p>answer eight questions in your own words and walk away with one sentence you can actually post against. no sign up, no email, nothing saved.</p>
+    <a class="btn" href="https://personal-branding-questionarrie.vercel.app/">take the 8 questions</a>
+    <span class="url">personal-branding-questionarrie.vercel.app</span>
+  </div>
+  <p class="send">if this helped, send it to one friend who keeps saying <span class="hand">“i'll start posting from monday”</span></p>
+  <p class="say">say hi on linkedin · <a href="https://www.linkedin.com/in/nowaygaurav/">linkedin.com/in/nowaygaurav</a></p>
+  <p class="fine">the numbers are reactions and comments on 29 of my posts (#46 to #100 of my 365 day challenge), checked on 2026-09-23. small sample, real numbers. test your own, that's the whole point. hook types adapted from The LinkedIn Lab (Amney Mounir &amp; Karina), Episode 8.</p>
+  <footer class="foot"><span>gaurav sharma · personal branding for B2B and D2C founders</span><span>15</span></footer>
+</section><a class="dl" href="10-hooks-i-actually-posted.pdf" download>download the pdf</a>
+<script>
+// screen only: shrink the 1080px pages to fit phones
+function fit(){ document.body.style.zoom = Math.min(1, (window.innerWidth - 16) / 1080); }
+if (!matchMedia('print').matches) { fit(); addEventListener('resize', fit); }
+addEventListener('beforeprint', () => document.body.style.zoom = 1);
+</script></body></html>
