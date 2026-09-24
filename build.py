@@ -370,6 +370,15 @@ def build() -> str:
 <body>{SCREEN_TOP}{cover}{rules}{hooks}{worksheet}{check}{back}{SCREEN_UI}{DEBUG_JS if os.environ.get("DEBUG") else ""}</body></html>"""
 
 
+SQUIG = ('<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">'
+         '<path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg>')
+
+
+def squiggles(html: str) -> str:
+    """Hand-drawn marker underline as inline SVG (so the in-browser PDF export draws it too)."""
+    return re.sub(r'<span class="mark">(.*?)</span>', lambda m: f'<span class="mark">{m.group(1)}{SQUIG}</span>', html)
+
+
 if __name__ == "__main__":
-    (HERE / "index.html").write_text(build())
+    (HERE / "index.html").write_text(squiggles(build()))
     print("wrote index.html")

@@ -43,8 +43,8 @@ em{ font-style:normal; color:var(--cobalt) }
 .small{ font-size:19px }
 
 /* hand-drawn marker underline, borrowed from Kiki */
-.mark{ display:inline-block; line-height:inherit; padding-bottom:10px; white-space:nowrap;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13' fill='none' stroke='%23FFC93D' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left 100% / 100% 20px }
+.mark{ display:inline-block; position:relative; isolation:isolate; line-height:inherit; padding-bottom:10px; white-space:nowrap }
+.squig{ position:absolute; left:0; bottom:0; width:100%; height:20px; overflow:visible; z-index:-1 }
 
 /* chips + cards */
 .chip,.fact{ display:inline-block; border:2.5px solid var(--ink); border-radius:999px; padding:7px 17px;
@@ -214,7 +214,7 @@ li[data-check]{ cursor:pointer }
   .field:focus{ background:rgba(255,201,61,.16) }
   html.capturing body{ zoom:1 !important }
   html.capturing .page{ box-shadow:none }
-  html.capturing [data-save]{ visibility:hidden }
+  html.capturing [data-save]{ display:none }
 }
 @media print{
   .bar,.intro{ display:none !important }
@@ -251,7 +251,7 @@ li[data-check]{ cursor:pointer }
 <circle cx="119" cy="94" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
 <circle cx="85" cy="100" r="6" fill="#17150F"/><circle cx="122" cy="97" r="6" fill="#17150F"/>
 <ellipse cx="101" cy="126" rx="9" ry="7" fill="#17150F"/></svg>
-  <h2>your hook has <span class="mark">one job</span></h2>
+  <h2>your hook has <span class="mark">one job<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">make them read line two. not go viral, not sound smart. just line two.</p>
 
   <div class="rule card"><span class="dot big">1</span><div><h3>two lines, then a gap</h3>
@@ -275,7 +275,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 01 / 10</span></header>
   <div class="num">01</div>
   <span class="chip">celebration + contrast</span>
-  <h2>the flex <span class="mark">with a twist</span></h2>
+  <h2>the flex <span class="mark">with a twist<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">say the impressive thing, then undercut it straight away. the gap between the two lines is the hook.</p>
 
   <figure class="post card shot">
@@ -310,7 +310,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 02 / 10</span></header>
   <div class="num">02</div>
   <span class="chip">face + story</span>
-  <h2>the <span class="mark">confession</span></h2>
+  <h2>the <span class="mark">confession<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">open on the feeling you'd normally hide. people stop for the emotion and stay for the story.</p>
 
   <figure class="post card shot">
@@ -345,7 +345,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 03 / 10</span></header>
   <div class="num">03</div>
   <span class="chip">credibility</span>
-  <h2>the <span class="mark">receipt</span></h2>
+  <h2>the <span class="mark">receipt<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">one exact number does more than a paragraph of adjectives. the more precise, the more people believe it.</p>
 
   <figure class="post card shot">
@@ -380,7 +380,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 04 / 10</span></header>
   <div class="num">04</div>
   <span class="chip">value</span>
-  <h2>the <span class="mark">“how did i”</span></h2>
+  <h2>the <span class="mark">“how did i”<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">ask the question people would DM you anyway, then answer it in the post. it's a promise dressed up as a question.</p>
 
   <figure class="post card shot">
@@ -415,7 +415,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 05 / 10</span></header>
   <div class="num">05</div>
   <span class="chip">surprise</span>
-  <h2>the <span class="mark">fake-out</span></h2>
+  <h2>the <span class="mark">fake-out<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">say something that sounds like one thing, then flip it in the very next line.</p>
 
   <figure class="post card shot">
@@ -450,7 +450,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 06 / 10</span></header>
   <div class="num">06</div>
   <span class="chip">curiosity</span>
-  <h2>the withheld <span class="mark">answer</span></h2>
+  <h2>the withheld <span class="mark">answer<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">tell them there IS an answer. just don't give it in line 1.</p>
 
   <figure class="post card shot">
@@ -485,7 +485,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 07 / 10</span></header>
   <div class="num">07</div>
   <span class="chip">honest failure</span>
-  <h2>the <span class="mark">backfire</span></h2>
+  <h2>the <span class="mark">backfire<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">tell them the plan went wrong. people trust the person who admits it way more than the one who only posts wins.</p>
 
   <figure class="post card shot">
@@ -520,7 +520,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 08 / 10</span></header>
   <div class="num">08</div>
   <span class="chip">photo + one line</span>
-  <h2>the <span class="mark">one-liner</span></h2>
+  <h2>the <span class="mark">one-liner<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">one line, one photo. no lesson, no list. it's a vibe, and vibes get comments.</p>
 
   <figure class="post card shot">
@@ -555,7 +555,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 09 / 10</span></header>
   <div class="num">09</div>
   <span class="chip">counter-narrative</span>
-  <h2>the hot <span class="mark">take</span></h2>
+  <h2>the hot <span class="mark">take<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">say the opposite of what everyone in your space keeps repeating. only if you actually believe it.</p>
 
   <figure class="post card shot">
@@ -590,7 +590,7 @@ li[data-check]{ cursor:pointer }
   <header class="top"><span class="eyebrow">hook 10 / 10</span></header>
   <div class="num">10</div>
   <span class="chip">say what they're thinking</span>
-  <h2>the <span class="mark">mirror</span></h2>
+  <h2>the <span class="mark">mirror<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">describe their problem better than they could. they feel seen before they know what you're offering.</p>
 
   <figure class="post card shot">
@@ -623,14 +623,14 @@ li[data-check]{ cursor:pointer }
 </section>
 <section class="page sheet">
   <div class="eyebrow">your turn · 15 min</div>
-  <h2>now you. <span class="mark">write 5.</span></h2>
+  <h2>now you. <span class="mark">write 5.<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <p class="lede">pick the next post you're going to write. write its hook 5 ways, one style each. post the one that makes you want to read line two. fill it in on <a href="https://nowaygaurav.github.io/linkedin-hooks/">the web version</a> and download your own copy, or just print this and scribble.</p>
   <div class="card rows"><div class="row"><span class="chip">the confession</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w0a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w0b"></div></div><div class="row"><span class="chip">the receipt</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w1a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w1b"></div></div><div class="row"><span class="chip">the fake-out</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w2a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w2b"></div></div><div class="row"><span class="chip">the withheld answer</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w3a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w3b"></div></div><div class="row"><span class="chip">the mirror</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w4a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w4b"></div></div></div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>13</span></footer>
 </section>
 <section class="page check">
   <div class="eyebrow">before you hit post</div>
-  <h2>the 30 second <span class="mark">check</span></h2>
+  <h2>the 30 second <span class="mark">check<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span></h2>
   <div class="card checklist"><ul><li data-check='c0'><span class='box'></span><span>line 1 fits on one phone line</span></li><li data-check='c1'><span class='box'></span><span>under ~15 words before “see more”</span></li><li data-check='c2'><span class='box'></span><span>there's a real number, name or place in it</span></li><li data-check='c3'><span class='box'></span><span>i'd still stand by it if nobody reacted</span></li><li data-check='c4'><span class='box'></span><span>if i pasted it on a stranger's profile, it wouldn't make sense. <span class='mute'>(that's how you know it's yours)</span></span></li></ul></div>
   <p class="tick hand">all 5 ticked? post it. missing one? fix line 1, not the whole post.</p>
 
@@ -649,7 +649,7 @@ li[data-check]{ cursor:pointer }
 <circle cx="85" cy="100" r="6" fill="#17150F"/><circle cx="122" cy="97" r="6" fill="#17150F"/>
 <ellipse cx="101" cy="126" rx="9" ry="7" fill="#17150F"/></svg>
   <div class="eyebrow light">that's it. go post.</div>
-  <h2>stuck on what your <span class="mark">story</span> even is?</h2>
+  <h2>stuck on what your <span class="mark">story<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg></span> even is?</h2>
   <p class="lede">hooks are easy once you know what you stand for. if you don't yet, i made a tiny thing for that.</p>
   <div class="card cta">
     <span class="chip">eight honest questions</span>
