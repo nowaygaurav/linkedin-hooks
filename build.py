@@ -373,12 +373,14 @@ def build() -> str:
 <body>{SCREEN_TOP}{cover}{rules}{hooks}{worksheet}{check}{back}{SCREEN_UI}{DEBUG_JS if os.environ.get("DEBUG") else ""}</body></html>"""
 
 
-SQUIG = ('<svg class="squig" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">'
-         '<path d="M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13" fill="none" stroke="#FFC93D" stroke-width="9" stroke-linecap="round"/></svg>')
+SQUIG = ('<img class="squig" alt="" aria-hidden="true" src="data:image/svg+xml,'
+         '%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 300 24%27 preserveAspectRatio=%27none%27%3E'
+         '%3Cpath d=%27M4 16 C 60 6, 120 21, 180 11 S 262 7, 296 13%27 fill=%27none%27 stroke=%27%23FFC93D%27 '
+         'stroke-width=%279%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">')
 
 
 def squiggles(html: str) -> str:
-    """Hand-drawn marker underline as inline SVG (so the in-browser PDF export draws it too)."""
+    """Hand-drawn marker underline as an <img> (html2canvas skips inline SVG, so the browser PDF export needs this)."""
     return re.sub(r'<span class="mark">(.*?)</span>', lambda m: f'<span class="mark">{m.group(1)}{SQUIG}</span>', html)
 
 
