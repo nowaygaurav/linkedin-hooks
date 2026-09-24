@@ -145,6 +145,19 @@ HOOKS = [
     ),
 ]
 
+# real post screenshots (shots/) + LinkedIn activity ids, in HOOKS order
+POSTS = [("flex", "7492671912431480832"), ("confession", "7489733638901612544"),
+         ("receipt", "7492968750564995072"), ("howdidi", "7492304063196221440"),
+         ("fakeout", "7490426197579988992"), ("withheld", "7484345582925402113"),
+         ("backfire", "7507180059527593984"), ("oneliner", "7491211649865920512"),
+         ("hottake", "7484851320336842752"), ("mirror", "7507837862533586944")]
+ALSO_IDS = {5: "7500629649450823680", 8: "7499103732236935168"}  # hiring, aap kartey kya ho
+
+
+def post_url(pid: str) -> str:
+    return f"https://www.linkedin.com/feed/update/urn:li:activity:{pid}/"
+
+
 STAR = """<svg class="{cls}" viewBox="0 0 200 200" aria-hidden="true">
 <path d="M101 6 L126 70 L193 74 L139 119 L157 187 L99 147 L41 189 L61 117 L7 72 L75 69 Z" fill="#1B3CCB" stroke="#17150F" stroke-width="5" stroke-linejoin="round"/>
 <circle cx="82" cy="97" r="14" fill="#FFFAF0" stroke="#17150F" stroke-width="4"/>
@@ -155,17 +168,11 @@ STAR = """<svg class="{cls}" viewBox="0 0 200 200" aria-hidden="true">
 FOOT = '<footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>{n}</span></footer>'
 
 
-SCREEN_UI = """<a class="dl" href="10-hooks-i-actually-posted.pdf" download>download the pdf</a>
-<script>
-// screen only: shrink the 1080px pages to fit phones
-function fit(){
-  const z = Math.min(1, (document.documentElement.clientWidth - 16) / 1080);
-  document.body.style.zoom = z;
-  document.querySelector('.dl').style.zoom = Math.min(1 / z, 1.8);  // keep the button tappable
-}
-if (!matchMedia('print').matches) { fit(); addEventListener('resize', fit); }
-addEventListener('beforeprint', () => document.body.style.zoom = 1);
-</script>"""
+SCREEN_TOP = """<div class="intro"><span class="fact hi">this guide is interactive</span>
+<p>fill the <b>your turn</b> boxes, the worksheet and the checklist right here. it saves on this device only, nothing gets sent anywhere. then hit <b>download my pdf</b> to keep your own filled-in copy.</p></div>"""
+
+SCREEN_UI = """<div class="bar"><button class="mine" type="button">download my pdf</button><a class="blankpdf" href="10-hooks-i-actually-posted.pdf" download>blank pdf</a></div>
+<script src="app.js"></script>"""
 
 DEBUG_JS = """<script>
 document.fonts.ready.then(() => {
@@ -199,10 +206,11 @@ def blanks(t: str) -> str:
 
 def hook_page(i: int, h: dict) -> str:
     n = f"{i:02d}"
+    shot, pid = POSTS[i - 1]
     why = "".join(f"<li>{w}</li>" for w in h["why"])
     also = ""
     if "also" in h:
-        also = f'<div class="also"><span class="hand">also worked:</span> “{h["also"][0]}” <span class="mute">{h["also"][1]}</span></div>'
+        also = f'<div class="also"><span class="hand">also worked:</span> <a href="{post_url(ALSO_IDS[i])}">“{h["also"][0]}”</a> <span class="mute">{h["also"][1]}</span></div>'
     return f"""
 <section class="page hook">
   <header class="top"><span class="eyebrow">hook {n} / 10</span></header>
@@ -211,13 +219,13 @@ def hook_page(i: int, h: dict) -> str:
   <h2>{h["name"][0]} <span class="mark">{h["name"][1]}</span></h2>
   <p class="lede">{h["lede"]}</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">{h["l1"]}</p>
-    <p class="l2">{h["l2"]}</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">{h["reactions"]} reactions</span><span class="fact">{h["comments"]} comment{"" if h["comments"] == 1 else "s"}</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/{shot}.png" alt="my linkedin post: {h["l1"]} {h["l2"]}">
+    <figcaption class="stats">
+      <span class="fact hi">{h["reactions"]} reactions</span><span class="fact">{h["comments"]} comment{"" if h["comments"] == 1 else "s"}</span>
+      <a class="open" href="{post_url(pid)}">open the real post ↗</a>
+    </figcaption>
+  </figure>
   {also}
 
   <div class="cols">
@@ -235,7 +243,7 @@ def hook_page(i: int, h: dict) -> str:
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>{h["turn"]}</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn{n}" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   {FOOT.format(n=i + 2)}
 </section>"""
@@ -290,25 +298,27 @@ def build() -> str:
 </section>"""
 
     rows = "".join(
-        f'<div class="row"><span class="chip">{s}</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div>'
-        for s in ["the confession", "the receipt", "the fake-out", "the withheld answer", "the mirror"]
+        f'<div class="row"><span class="chip">{s}</span>'
+        f'<div class="wl"><span>line 1</span><input class="field wfield" data-save="w{k}a" placeholder="type here…"></div>'
+        f'<div class="wl"><span>line 2</span><input class="field wfield" data-save="w{k}b"></div></div>'
+        for k, s in enumerate( ["the confession", "the receipt", "the fake-out", "the withheld answer", "the mirror"])
     )
     worksheet = f"""
 <section class="page sheet">
   <div class="eyebrow">your turn · 15 min</div>
   <h2>now you. <span class="mark">write 5.</span></h2>
-  <p class="lede">pick the next post you're going to write. write its hook 5 ways, one style each. post the one that makes you want to read line two. print this, or just screenshot it and scribble.</p>
+  <p class="lede">pick the next post you're going to write. write its hook 5 ways, one style each. post the one that makes you want to read line two. fill it in on <a href="https://nowaygaurav.github.io/linkedin-hooks/">the web version</a> and download your own copy, or just print this and scribble.</p>
   <div class="card rows">{rows}</div>
   {FOOT.format(n=13)}
 </section>"""
 
-    checks = "".join(f"<li><span class='box'></span><span>{c}</span></li>" for c in [
+    checks = "".join(f"<li data-check='c{k}'><span class='box'></span><span>{c}</span></li>" for k, c in enumerate([
         "line 1 fits on one phone line",
         "under ~15 words before “see more”",
         "there's a real number, name or place in it",
         "i'd still stand by it if nobody reacted",
         "if i pasted it on a stranger's profile, it wouldn't make sense. <span class='mute'>(that's how you know it's yours)</span>",
-    ])
+    ]))
     check = f"""
 <section class="page check">
   <div class="eyebrow">before you hit post</div>
@@ -357,7 +367,7 @@ def build() -> str:
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Instrument+Sans:wght@400;500;600;700&display=block" rel="stylesheet">
 <style>{css}</style></head>
-<body>{cover}{rules}{hooks}{worksheet}{check}{back}{SCREEN_UI}{DEBUG_JS if os.environ.get("DEBUG") else ""}</body></html>"""
+<body>{SCREEN_TOP}{cover}{rules}{hooks}{worksheet}{check}{back}{SCREEN_UI}{DEBUG_JS if os.environ.get("DEBUG") else ""}</body></html>"""
 
 
 if __name__ == "__main__":

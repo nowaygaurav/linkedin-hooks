@@ -60,6 +60,7 @@ em{ font-style:normal; color:var(--cobalt) }
 .foot{ position:absolute; left:84px; right:84px; bottom:40px; display:flex; justify-content:space-between;
   align-items:baseline; font-size:17px; color:var(--mute) }
 .foot .hand{ font-size:26px }
+.filled{ pointer-events:none }
 
 .star{ position:absolute }
 
@@ -136,7 +137,7 @@ em{ font-style:normal; color:var(--cobalt) }
 
 /* ---------- worksheet ---------- */
 .rows{ margin-top:36px; padding:10px 34px 16px }
-.row{ padding:20px 0 16px; border-bottom:2px dashed var(--ink) }
+.row{ padding:16px 0 14px; border-bottom:2px dashed var(--ink) }
 .row:last-child{ border-bottom:0 }
 .row .chip{ background:var(--cobalt-soft) }
 .wl{ display:flex; align-items:flex-end; gap:14px; margin-top:10px }
@@ -176,19 +177,53 @@ em{ font-style:normal; color:var(--cobalt) }
 .back .foot{ color:rgba(255,250,244,.6) }
 .tick{ margin-top:34px; font-size:36px; color:var(--cobalt); transform:rotate(-1deg); max-width:820px; line-height:1.15 }
 
+/* ---------- real post screenshot ---------- */
+.shot{ padding:0; overflow:hidden }
+.shot img{ display:block; width:100% }
+.shot .stats{ display:flex; align-items:center; gap:10px; margin:0; padding:12px 20px 14px; border-top:2.5px solid var(--ink); background:var(--paper) }
+.open{ margin-left:auto; font-weight:700; font-size:18px; color:var(--cobalt); text-decoration:none; border-bottom:3px solid var(--marker); padding-bottom:1px }
+.also a{ text-decoration:none; border-bottom:2px solid var(--marker) }
+
+/* ---------- fill-in fields ---------- */
+.field{ font-family:var(--hand); font-weight:700; border:0; outline:0; background:transparent; resize:none; border-radius:0; -webkit-appearance:none; appearance:none }
+.write{ position:relative }
+.tfield{ position:absolute; inset:0; width:100%; height:100%; color:var(--marker); font-size:30px; line-height:36px; padding:3px 2px 0; overflow:hidden; white-space:pre-wrap }
+.tfield::placeholder{ color:rgba(255,250,240,.45) }
+.wl .wfield{ flex:1; min-width:0; height:32px; line-height:32px; border-bottom:2px solid var(--ink); font-size:27px; color:var(--cobalt); padding:0 4px; white-space:nowrap; overflow:hidden }
+.wfield::placeholder{ color:rgba(138,129,114,.6) }
+li[data-check]{ cursor:pointer }
+.box{ position:relative }
+.on .box{ background:var(--marker) }
+.on .box::after{ content:""; position:absolute; left:9px; top:1px; width:10px; height:20px; border:solid var(--ink); border-width:0 4px 4px 0; transform:rotate(45deg) }
+
 /* ---------- screen only (web version) ---------- */
-.dl{ display:none }
+.bar,.intro{ display:none }
 @media screen{
   html,body{ background:#E9DDCB }
-  body{ padding:24px 0 120px }
+  body{ padding:24px 0 140px; zoom:var(--fit,1) }
   .page{ margin:0 auto 28px; box-shadow:0 0 0 3px var(--ink), 10px 10px 0 3px var(--ink) }
-  .dl{ display:inline-block; position:fixed; left:50%; bottom:28px; transform:translateX(-50%); z-index:9;
-    font-family:var(--display); font-weight:800; font-size:24px; text-decoration:none; color:#fff; background:var(--cobalt);
-    border:3px solid var(--ink); border-radius:999px; padding:12px 34px 9px; box-shadow:5px 5px 0 var(--ink) }
+  .intro{ display:block; width:1080px; margin:0 auto 28px; padding:30px 40px 32px; background:var(--paper);
+    border:3px solid var(--ink); box-shadow:8px 8px 0 var(--ink); font-size:30px; line-height:1.45 }
+  .intro p{ margin-top:14px }
+  .bar{ display:flex; gap:14px; align-items:center; position:fixed; left:50%; bottom:24px; transform:translateX(-50%); z-index:9; zoom:var(--unfit,1) }
+  .bar .mine{ font-family:var(--display); font-weight:800; font-size:24px; color:#fff; background:var(--cobalt); border:3px solid var(--ink);
+    border-radius:999px; padding:12px 30px 9px; box-shadow:5px 5px 0 var(--ink); cursor:pointer; white-space:nowrap }
+  .bar .mine:disabled{ cursor:wait }
+  .bar .blankpdf{ font-weight:700; font-size:17px; color:var(--ink); background:var(--paper); border:3px solid var(--ink); border-radius:999px;
+    padding:10px 18px; text-decoration:none; box-shadow:4px 4px 0 var(--ink); white-space:nowrap }
+  .field:focus{ background:rgba(255,201,61,.16) }
+  html.capturing body{ zoom:1 !important }
+  html.capturing .page{ box-shadow:none }
+  html.capturing [data-save]{ visibility:hidden }
 }
-@media print{ .dl{ display:none !important } }
+@media print{
+  .bar,.intro{ display:none !important }
+  .field::placeholder{ color:transparent !important }
+}
+.sheet .lede a{ color:var(--cobalt); text-decoration:none; border-bottom:3px solid var(--marker) }
 </style></head>
-<body>
+<body><div class="intro"><span class="fact hi">this guide is interactive</span>
+<p>fill the <b>your turn</b> boxes, the worksheet and the checklist right here. it saves on this device only, nothing gets sent anywhere. then hit <b>download my pdf</b> to keep your own filled-in copy.</p></div>
 <section class="page cover">
   <div class="eyebrow">a free guide · gaurav sharma</div>
   <svg class="star cover-star" viewBox="0 0 200 200" aria-hidden="true">
@@ -243,13 +278,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the flex <span class="mark">with a twist</span></h2>
   <p class="lede">say the impressive thing, then undercut it straight away. the gap between the two lines is the hook.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">i was the president of Finance & Investment Cell, Aryabhatta College</p>
-    <p class="l2">and now my career is complete opposite of it</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">175 reactions</span><span class="fact">14 comments</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/flex.png" alt="my linkedin post: i was the president of Finance & Investment Cell, Aryabhatta College and now my career is complete opposite of it">
+    <figcaption class="stats">
+      <span class="fact hi">175 reactions</span><span class="fact">14 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7492671912431480832/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -267,7 +302,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>write down 3 titles, roles or wins you had that have nothing to do with your work today. pick the one people would least expect from you. that's line 1.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn01" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>3</span></footer>
 </section>
@@ -278,13 +313,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the <span class="mark">confession</span></h2>
   <p class="lede">open on the feeling you'd normally hide. people stop for the emotion and stay for the story.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">seeing my mother crying was not on the bucket list gang</p>
-    <p class="l2">but your boy has finally moved out..</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">171 reactions</span><span class="fact">33 comments</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/confession.png" alt="my linkedin post: seeing my mother crying was not on the bucket list gang but your boy has finally moved out..">
+    <figcaption class="stats">
+      <span class="fact hi">171 reactions</span><span class="fact">33 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7489733638901612544/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -302,7 +337,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>think of the last big decision you made. what was the hardest moment around it, the one you'd skip if you told the story at a party? start there.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn02" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>4</span></footer>
 </section>
@@ -313,13 +348,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the <span class="mark">receipt</span></h2>
   <p class="lede">one exact number does more than a paragraph of adjectives. the more precise, the more people believe it.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">in the month of july i spent 1,15,643</p>
-    <p class="l2">to be precise</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">155 reactions</span><span class="fact">28 comments</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/receipt.png" alt="my linkedin post: in the month of july i spent 1,15,643 to be precise">
+    <figcaption class="stats">
+      <span class="fact hi">155 reactions</span><span class="fact">28 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7492968750564995072/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -337,7 +372,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>open your bank app, screen time, calendar or sent folder. find one number from last month that surprised you. don't round it.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn03" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>5</span></footer>
 </section>
@@ -348,13 +383,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the <span class="mark">“how did i”</span></h2>
   <p class="lede">ask the question people would DM you anyway, then answer it in the post. it's a promise dressed up as a question.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">how as a 21 year old i managed</p>
-    <p class="l2">to move out from my house?</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">141 reactions</span><span class="fact">30 comments</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/howdidi.png" alt="my linkedin post: how as a 21 year old i managed to move out from my house?">
+    <figcaption class="stats">
+      <span class="fact hi">141 reactions</span><span class="fact">30 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7492304063196221440/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -372,7 +407,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>what's one thing people keep asking you “how did you do that?” about? write the question exactly the way they ask it.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn04" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>6</span></footer>
 </section>
@@ -383,14 +418,14 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the <span class="mark">fake-out</span></h2>
   <p class="lede">say something that sounds like one thing, then flip it in the very next line.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">i hate posting on linkedin nowadays!!</p>
-    <p class="l2">and it's not what you think</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">118 reactions</span><span class="fact">11 comments</span></div>
-  </div>
-  <div class="also"><span class="hand">also worked:</span> “i am hiring, actually not for my company!” <span class="mute">105 reactions · 27 comments</span></div>
+  <figure class="post card shot">
+    <img src="shots/fakeout.png" alt="my linkedin post: i hate posting on linkedin nowadays!! and it's not what you think">
+    <figcaption class="stats">
+      <span class="fact hi">118 reactions</span><span class="fact">11 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7490426197579988992/">open the real post ↗</a>
+    </figcaption>
+  </figure>
+  <div class="also"><span class="hand">also worked:</span> <a href="https://www.linkedin.com/feed/update/urn:li:activity:7500629649450823680/">“i am hiring, actually not for my company!”</a> <span class="mute">105 reactions · 27 comments</span></div>
 
   <div class="cols">
     <div class="why">
@@ -407,7 +442,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>finish “i hate ___” three different ways. keep the one where the real reason is the opposite of what people will assume.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn05" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>7</span></footer>
 </section>
@@ -418,13 +453,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the withheld <span class="mark">answer</span></h2>
   <p class="lede">tell them there IS an answer. just don't give it in line 1.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">i inherited the one thing</p>
-    <p class="l2">i used to hate about my dad</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">107 reactions</span><span class="fact">27 comments</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/withheld.png" alt="my linkedin post: i inherited the one thing i used to hate about my dad">
+    <figcaption class="stats">
+      <span class="fact hi">107 reactions</span><span class="fact">27 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7484345582925402113/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -442,7 +477,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>who's the person you swore you'd never become? what's one habit of theirs you have now? that's your post.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn06" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>8</span></footer>
 </section>
@@ -453,13 +488,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the <span class="mark">backfire</span></h2>
   <p class="lede">tell them the plan went wrong. people trust the person who admits it way more than the one who only posts wins.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">moving out actually backfired on me</p>
-    <p class="l2">because i didn't see coming these things</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">80 reactions</span><span class="fact">11 comments</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/backfire.png" alt="my linkedin post: moving out actually backfired on me because i didn't see coming these things">
+    <figcaption class="stats">
+      <span class="fact hi">80 reactions</span><span class="fact">11 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7507180059527593984/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -477,7 +512,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>pick something you posted about proudly 1 to 3 months ago. what went wrong after? write the update nobody asked for.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn07" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>9</span></footer>
 </section>
@@ -488,14 +523,14 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the <span class="mark">one-liner</span></h2>
   <p class="lede">one line, one photo. no lesson, no list. it's a vibe, and vibes get comments.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">i was staring the ceiling to get some idea</p>
-    <p class="l2">i think need to stare more.</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">73 reactions</span><span class="fact">14 comments</span></div>
-  </div>
-  <div class="also"><span class="hand">also worked:</span> “Hardest question to answer ‘Aap kartey kya ho?’” <span class="mute">45 reactions · 5 comments</span></div>
+  <figure class="post card shot">
+    <img src="shots/oneliner.png" alt="my linkedin post: i was staring the ceiling to get some idea i think need to stare more.">
+    <figcaption class="stats">
+      <span class="fact hi">73 reactions</span><span class="fact">14 comments</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7491211649865920512/">open the real post ↗</a>
+    </figcaption>
+  </figure>
+  <div class="also"><span class="hand">also worked:</span> <a href="https://www.linkedin.com/feed/update/urn:li:activity:7499103732236935168/">“Hardest question to answer ‘Aap kartey kya ho?’”</a> <span class="mute">45 reactions · 5 comments</span></div>
 
   <div class="cols">
     <div class="why">
@@ -512,7 +547,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>take one honest photo of where you're working today. write one line about it. post it before you overthink it.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn08" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>10</span></footer>
 </section>
@@ -523,13 +558,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the hot <span class="mark">take</span></h2>
   <p class="lede">say the opposite of what everyone in your space keeps repeating. only if you actually believe it.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">ai will not make you rich</p>
-    <p class="l2">at least in 2026</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">52 reactions</span><span class="fact">1 comment</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/hottake.png" alt="my linkedin post: ai will not make you rich at least in 2026">
+    <figcaption class="stats">
+      <span class="fact hi">52 reactions</span><span class="fact">1 comment</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7484851320336842752/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -547,7 +582,7 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>write down the advice in your industry you're most tired of hearing. now write, in one line, what you'd say instead.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn09" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>11</span></footer>
 </section>
@@ -558,13 +593,13 @@ em{ font-style:normal; color:var(--cobalt) }
   <h2>the <span class="mark">mirror</span></h2>
   <p class="lede">describe their problem better than they could. they feel seen before they know what you're offering.</p>
 
-  <div class="post card">
-    <div class="post-head"><div class="av">G</div><div><b>gaurav sharma</b><small>my real post, word for word</small></div></div>
-    <p class="l1">you're posting daily, building daily, grinding daily</p>
-    <p class="l2">and still can't tell if you're actually moving forward</p>
-    <span class="more">…see more</span>
-    <div class="stats"><span class="fact hi">45 reactions</span><span class="fact">1 comment</span></div>
-  </div>
+  <figure class="post card shot">
+    <img src="shots/mirror.png" alt="my linkedin post: you're posting daily, building daily, grinding daily and still can't tell if you're actually moving forward">
+    <figcaption class="stats">
+      <span class="fact hi">45 reactions</span><span class="fact">1 comment</span>
+      <a class="open" href="https://www.linkedin.com/feed/update/urn:li:activity:7507837862533586944/">open the real post ↗</a>
+    </figcaption>
+  </figure>
   
 
   <div class="cols">
@@ -582,21 +617,21 @@ em{ font-style:normal; color:var(--cobalt) }
   <div class="turn">
     <h4>your turn <span class="fact hi">5 min</span></h4>
     <p>collect the exact words your people use when they complain. DMs, comments, calls. use their words in line 1, not yours.</p>
-    <div class="lines"><i></i><i></i></div>
+    <div class="write"><div class="lines"><i></i><i></i></div><textarea class="field tfield" data-save="turn10" rows="2" placeholder="write it here…"></textarea></div>
   </div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>12</span></footer>
 </section>
 <section class="page sheet">
   <div class="eyebrow">your turn · 15 min</div>
   <h2>now you. <span class="mark">write 5.</span></h2>
-  <p class="lede">pick the next post you're going to write. write its hook 5 ways, one style each. post the one that makes you want to read line two. print this, or just screenshot it and scribble.</p>
-  <div class="card rows"><div class="row"><span class="chip">the confession</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the receipt</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the fake-out</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the withheld answer</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div><div class="row"><span class="chip">the mirror</span><div class="wl"><span>line 1</span><i></i></div><div class="wl"><span>line 2</span><i></i></div></div></div>
+  <p class="lede">pick the next post you're going to write. write its hook 5 ways, one style each. post the one that makes you want to read line two. fill it in on <a href="https://nowaygaurav.github.io/linkedin-hooks/">the web version</a> and download your own copy, or just print this and scribble.</p>
+  <div class="card rows"><div class="row"><span class="chip">the confession</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w0a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w0b"></div></div><div class="row"><span class="chip">the receipt</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w1a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w1b"></div></div><div class="row"><span class="chip">the fake-out</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w2a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w2b"></div></div><div class="row"><span class="chip">the withheld answer</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w3a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w3b"></div></div><div class="row"><span class="chip">the mirror</span><div class="wl"><span>line 1</span><input class="field wfield" data-save="w4a" placeholder="type here…"></div><div class="wl"><span>line 2</span><input class="field wfield" data-save="w4b"></div></div></div>
   <footer class="foot"><span>gaurav sharma · 10 hooks i actually posted</span><span>13</span></footer>
 </section>
 <section class="page check">
   <div class="eyebrow">before you hit post</div>
   <h2>the 30 second <span class="mark">check</span></h2>
-  <div class="card checklist"><ul><li><span class='box'></span><span>line 1 fits on one phone line</span></li><li><span class='box'></span><span>under ~15 words before “see more”</span></li><li><span class='box'></span><span>there's a real number, name or place in it</span></li><li><span class='box'></span><span>i'd still stand by it if nobody reacted</span></li><li><span class='box'></span><span>if i pasted it on a stranger's profile, it wouldn't make sense. <span class='mute'>(that's how you know it's yours)</span></span></li></ul></div>
+  <div class="card checklist"><ul><li data-check='c0'><span class='box'></span><span>line 1 fits on one phone line</span></li><li data-check='c1'><span class='box'></span><span>under ~15 words before “see more”</span></li><li data-check='c2'><span class='box'></span><span>there's a real number, name or place in it</span></li><li data-check='c3'><span class='box'></span><span>i'd still stand by it if nobody reacted</span></li><li data-check='c4'><span class='box'></span><span>if i pasted it on a stranger's profile, it wouldn't make sense. <span class='mute'>(that's how you know it's yours)</span></span></li></ul></div>
   <p class="tick hand">all 5 ticked? post it. missing one? fix line 1, not the whole post.</p>
 
   <div class="leftout">
@@ -627,14 +662,5 @@ em{ font-style:normal; color:var(--cobalt) }
   <p class="say">say hi on linkedin · <a href="https://www.linkedin.com/in/nowaygaurav/">linkedin.com/in/nowaygaurav</a></p>
   <p class="fine">the numbers are reactions and comments on 29 of my posts (#46 to #100 of my 365 day challenge), checked on 2026-09-23. small sample, real numbers. test your own, that's the whole point. hook types adapted from The LinkedIn Lab (Amney Mounir &amp; Karina), Episode 8.</p>
   <footer class="foot"><span>gaurav sharma · personal branding for B2B and D2C founders</span><span>15</span></footer>
-</section><a class="dl" href="10-hooks-i-actually-posted.pdf" download>download the pdf</a>
-<script>
-// screen only: shrink the 1080px pages to fit phones
-function fit(){
-  const z = Math.min(1, (document.documentElement.clientWidth - 16) / 1080);
-  document.body.style.zoom = z;
-  document.querySelector('.dl').style.zoom = Math.min(1 / z, 1.8);  // keep the button tappable
-}
-if (!matchMedia('print').matches) { fit(); addEventListener('resize', fit); }
-addEventListener('beforeprint', () => document.body.style.zoom = 1);
-</script></body></html>
+</section><div class="bar"><button class="mine" type="button">download my pdf</button><a class="blankpdf" href="10-hooks-i-actually-posted.pdf" download>blank pdf</a></div>
+<script src="app.js"></script></body></html>
