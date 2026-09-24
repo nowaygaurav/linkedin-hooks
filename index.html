@@ -43,8 +43,8 @@ em{ font-style:normal; color:var(--cobalt) }
 .small{ font-size:19px }
 
 /* hand-drawn marker underline, borrowed from Kiki */
-.mark{ display:inline-block; position:relative; isolation:isolate; line-height:inherit; padding-bottom:10px; white-space:nowrap }
-.squig{ position:absolute; left:0; bottom:0; width:100%; height:20px; overflow:visible; z-index:-1 }
+.mark{ display:inline-block; position:relative; line-height:inherit; padding-bottom:10px; white-space:nowrap }
+.squig{ position:absolute; left:0; bottom:0; width:100%; height:20px; overflow:visible }
 
 /* chips + cards */
 .chip,.fact{ display:inline-block; border:2.5px solid var(--ink); border-radius:999px; padding:7px 17px;
@@ -124,8 +124,9 @@ em{ font-style:normal; color:var(--cobalt) }
 .watch b{ color:var(--crimson); text-transform:uppercase; font-size:15px; letter-spacing:.08em; margin-right:6px }
 .tpl{ background:var(--cobalt-soft); padding:20px 24px; align-self:start; box-shadow:6px 6px 0 var(--ink) }
 .tpl p{ margin-top:10px; font-size:21px; line-height:1.75 }
-.blank{ background:var(--marker); border:2px solid var(--ink); border-radius:8px; padding:0 7px; font-weight:600;
-  -webkit-box-decoration-break:clone; box-decoration-break:clone }
+.bw{ background:var(--marker); font-weight:600; padding:3px 0; box-shadow:0 2px 0 var(--ink) }
+.bw:first-child{ padding-left:7px; border-radius:6px 0 0 6px }
+.bw:last-child{ padding-right:7px; border-radius:0 6px 6px 0 }
 
 .turn{ align-self:stretch; margin:auto 8px 92px 0; background:var(--cobalt); color:#fff;
   border:3px solid var(--ink); box-shadow:8px 8px 0 var(--ink); border-radius:var(--wobble);
@@ -295,7 +296,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p>i was <span class="blank">the impressive thing you used to be</span><br>and now i <span class="blank">do the complete opposite</span></p>
+      <p>i was <span class="blank"><span class="bw">the </span><span class="bw">impressive </span><span class="bw">thing </span><span class="bw">you </span><span class="bw">used </span><span class="bw">to </span><span class="bw">be</span></span><br>and now i <span class="blank"><span class="bw">do </span><span class="bw">the </span><span class="bw">complete </span><span class="bw">opposite</span></span></p>
     </div>
   </div>
 
@@ -330,7 +331,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p><span class="blank">the emotional moment you didn't plan for</span><br>but <span class="blank">the big thing you actually did</span></p>
+      <p><span class="blank"><span class="bw">the </span><span class="bw">emotional </span><span class="bw">moment </span><span class="bw">you </span><span class="bw">didn't </span><span class="bw">plan </span><span class="bw">for</span></span><br>but <span class="blank"><span class="bw">the </span><span class="bw">big </span><span class="bw">thing </span><span class="bw">you </span><span class="bw">actually </span><span class="bw">did</span></span></p>
     </div>
   </div>
 
@@ -365,7 +366,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p>in <span class="blank">a time period</span> i <span class="blank">spent / sent / lost / made</span> <span class="blank">an exact, unrounded number</span><br><span class="blank">a 3 word aside</span></p>
+      <p>in <span class="blank"><span class="bw">a </span><span class="bw">time </span><span class="bw">period</span></span> i <span class="blank"><span class="bw">spent </span><span class="bw">/ </span><span class="bw">sent </span><span class="bw">/ </span><span class="bw">lost </span><span class="bw">/ </span><span class="bw">made</span></span> <span class="blank"><span class="bw">an </span><span class="bw">exact, </span><span class="bw">unrounded </span><span class="bw">number</span></span><br><span class="blank"><span class="bw">a </span><span class="bw">3 </span><span class="bw">word </span><span class="bw">aside</span></span></p>
     </div>
   </div>
 
@@ -400,7 +401,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p>how as a <span class="blank">who you were back then</span> i managed<br>to <span class="blank">the thing people think is hard</span>?</p>
+      <p>how as a <span class="blank"><span class="bw">who </span><span class="bw">you </span><span class="bw">were </span><span class="bw">back </span><span class="bw">then</span></span> i managed<br>to <span class="blank"><span class="bw">the </span><span class="bw">thing </span><span class="bw">people </span><span class="bw">think </span><span class="bw">is </span><span class="bw">hard</span></span>?</p>
     </div>
   </div>
 
@@ -435,7 +436,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p>i <span class="blank">a strong statement nobody expects from you</span><br>and it's not what you think</p>
+      <p>i <span class="blank"><span class="bw">a </span><span class="bw">strong </span><span class="bw">statement </span><span class="bw">nobody </span><span class="bw">expects </span><span class="bw">from </span><span class="bw">you</span></span><br>and it's not what you think</p>
     </div>
   </div>
 
@@ -470,7 +471,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p>i <span class="blank">inherited / copied / became</span> the one thing<br>i used to <span class="blank">hate / judge / laugh at</span> about <span class="blank">a person</span></p>
+      <p>i <span class="blank"><span class="bw">inherited </span><span class="bw">/ </span><span class="bw">copied </span><span class="bw">/ </span><span class="bw">became</span></span> the one thing<br>i used to <span class="blank"><span class="bw">hate </span><span class="bw">/ </span><span class="bw">judge </span><span class="bw">/ </span><span class="bw">laugh </span><span class="bw">at</span></span> about <span class="blank"><span class="bw">a </span><span class="bw">person</span></span></p>
     </div>
   </div>
 
@@ -505,7 +506,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p><span class="blank">a decision you were proud of</span> actually backfired on me<br>because <span class="blank">what you didn't see coming</span></p>
+      <p><span class="blank"><span class="bw">a </span><span class="bw">decision </span><span class="bw">you </span><span class="bw">were </span><span class="bw">proud </span><span class="bw">of</span></span> actually backfired on me<br>because <span class="blank"><span class="bw">what </span><span class="bw">you </span><span class="bw">didn't </span><span class="bw">see </span><span class="bw">coming</span></span></p>
     </div>
   </div>
 
@@ -540,7 +541,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p><span class="blank">a real, slightly silly thing you're doing right now</span><br><span class="blank">one line joke about it</span></p>
+      <p><span class="blank"><span class="bw">a </span><span class="bw">real, </span><span class="bw">slightly </span><span class="bw">silly </span><span class="bw">thing </span><span class="bw">you're </span><span class="bw">doing </span><span class="bw">right </span><span class="bw">now</span></span><br><span class="blank"><span class="bw">one </span><span class="bw">line </span><span class="bw">joke </span><span class="bw">about </span><span class="bw">it</span></span></p>
     </div>
   </div>
 
@@ -575,7 +576,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p><span class="blank">the popular belief in your space</span> will not <span class="blank">the promise everyone makes</span><br>at least <span class="blank">the condition that makes you right</span></p>
+      <p><span class="blank"><span class="bw">the </span><span class="bw">popular </span><span class="bw">belief </span><span class="bw">in </span><span class="bw">your </span><span class="bw">space</span></span> will not <span class="blank"><span class="bw">the </span><span class="bw">promise </span><span class="bw">everyone </span><span class="bw">makes</span></span><br>at least <span class="blank"><span class="bw">the </span><span class="bw">condition </span><span class="bw">that </span><span class="bw">makes </span><span class="bw">you </span><span class="bw">right</span></span></p>
     </div>
   </div>
 
@@ -610,7 +611,7 @@ li[data-check]{ cursor:pointer }
     </div>
     <div class="tpl card">
       <h4 class="hand">steal the template</h4>
-      <p>you're <span class="blank">doing X</span> daily, <span class="blank">doing Y</span> daily<br>and still <span class="blank">the frustration they won't say out loud</span></p>
+      <p>you're <span class="blank"><span class="bw">doing </span><span class="bw">X</span></span> daily, <span class="blank"><span class="bw">doing </span><span class="bw">Y</span></span> daily<br>and still <span class="blank"><span class="bw">the </span><span class="bw">frustration </span><span class="bw">they </span><span class="bw">won't </span><span class="bw">say </span><span class="bw">out </span><span class="bw">loud</span></span></p>
     </div>
   </div>
 

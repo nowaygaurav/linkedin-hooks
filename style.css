@@ -31,8 +31,8 @@ em{ font-style:normal; color:var(--cobalt) }
 .small{ font-size:19px }
 
 /* hand-drawn marker underline, borrowed from Kiki */
-.mark{ display:inline-block; position:relative; isolation:isolate; line-height:inherit; padding-bottom:10px; white-space:nowrap }
-.squig{ position:absolute; left:0; bottom:0; width:100%; height:20px; overflow:visible; z-index:-1 }
+.mark{ display:inline-block; position:relative; line-height:inherit; padding-bottom:10px; white-space:nowrap }
+.squig{ position:absolute; left:0; bottom:0; width:100%; height:20px; overflow:visible }
 
 /* chips + cards */
 .chip,.fact{ display:inline-block; border:2.5px solid var(--ink); border-radius:999px; padding:7px 17px;
@@ -112,8 +112,9 @@ em{ font-style:normal; color:var(--cobalt) }
 .watch b{ color:var(--crimson); text-transform:uppercase; font-size:15px; letter-spacing:.08em; margin-right:6px }
 .tpl{ background:var(--cobalt-soft); padding:20px 24px; align-self:start; box-shadow:6px 6px 0 var(--ink) }
 .tpl p{ margin-top:10px; font-size:21px; line-height:1.75 }
-.blank{ background:var(--marker); border:2px solid var(--ink); border-radius:8px; padding:0 7px; font-weight:600;
-  -webkit-box-decoration-break:clone; box-decoration-break:clone }
+.bw{ background:var(--marker); font-weight:600; padding:3px 0; box-shadow:0 2px 0 var(--ink) }
+.bw:first-child{ padding-left:7px; border-radius:6px 0 0 6px }
+.bw:last-child{ padding-right:7px; border-radius:0 6px 6px 0 }
 
 .turn{ align-self:stretch; margin:auto 8px 92px 0; background:var(--cobalt); color:#fff;
   border:3px solid var(--ink); box-shadow:8px 8px 0 var(--ink); border-radius:var(--wobble);

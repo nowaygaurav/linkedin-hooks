@@ -198,7 +198,10 @@ def blanks(t: str) -> str:
     out = []
     for part in parts:
         if part.startswith("["):
-            out.append(f'<span class="blank">{part[1:-1]}</span>')
+            words = part[1:-1].split(" ")
+            # one highlight per word, so wrapped blanks look right in the browser PDF export too
+            spans = "".join(f'<span class="bw">{w}{" " if k < len(words) - 1 else ""}</span>' for k, w in enumerate(words))
+            out.append(f'<span class="blank">{spans}</span>')
         else:
             out.append(part.replace(" / ", "<br>"))
     return "".join(out)
